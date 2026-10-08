@@ -1,0 +1,57 @@
+{
+  "slug": "event-tool",
+  "title": "Legacy Level Event Visualizer",
+  "subtitle": "Parse legacy scripts and explore event connections in Unreal",
+  "category": "Commercial project",
+  "tags": [
+    "Python",
+    "JSON",
+    "Unreal editor tools"
+  ],
+  "summary": "Parsed legacy level scripts into searchable event data and displayed their connections in the Unreal viewport.",
+  "description": "I worked with a programmer to build a legacy level event visualizer for an unannounced FPS remake. Designers could search original scripts, inspect action order, and follow event connections.",
+  "role": "Tool design & implementation",
+  "company": "Virtuos",
+  "period": "Jul 2023 – Feb 2025",
+  "status": "Used in production",
+  "cover": null,
+  "ownership": [
+    "Proposed batch parsing and spatial visualization, and defined the fields and event relationships designers needed.",
+    "Worked with a programmer on the Python parser, JSON data, and Editor Utility Widget interface.",
+    "Introduced the tool to the design team for inspecting original events and planning production."
+  ],
+  "evidence": "Visualizes events from legacy level scripts for an unannounced FPS remake.",
+  "sections": [
+    {
+      "id": "problem",
+      "title": "Why we needed the tool",
+      "intro": "The legacy editor was unstable and documentation was incomplete. Events with a chance to trigger could also be missed during a playthrough.",
+      "paragraphs": [
+        "I proposed extracting script data in batches and displaying the event connections in Unreal, so designers could inspect the logic alongside its position in the level."
+      ]
+    },
+    {
+      "id": "workflow",
+      "title": "From script to viewport",
+      "steps": [
+        "Read exported Actor text and preserve action order",
+        "Match Event and Tag fields while retaining parallel broadcast relationships",
+        "Write readable steps and relationships to JSON",
+        "Load the map’s data through an Editor Utility Widget",
+        "Search events, locate them in the viewport, and inspect upstream/downstream relationships"
+      ]
+    },
+    {
+      "id": "verification",
+      "title": "Team use and next steps",
+      "paragraphs": [
+        "The design team used the tool to inspect original scripts, estimate remake work, and plan production.",
+        "We checked parsing results by sampling. For a further iteration, I would start with reports for unknown actions and broken connections, followed by a fixed set of regression cases."
+      ]
+    }
+  ],
+  "outcomes": [
+    "The design team adopted the tool for event inspection, work estimates, and production planning."
+  ],
+  "limitations": []
+}

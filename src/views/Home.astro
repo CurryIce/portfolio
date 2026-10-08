@@ -1,0 +1,92 @@
+---
+import Base from '../layouts/Base.astro';
+import { getContent, pageUrl, url } from '../lib/content';
+import { mediaSrcSet, mediaPreview } from '../lib/media';
+import { getUI, type Lang } from '../lib/i18n';
+interface Props { lang?: Lang; }
+const { lang = 'zh' } = Astro.props;
+const { profile, projects, workGroups } = getContent(lang);
+const ui = getUI(lang);
+const purl = (path = '') => pageUrl(path, lang);
+const requireProject = (slug: string) => {
+  const project = projects.find(item => item.slug === slug);
+  if (!project) throw new Error(`Homepage requires project ${slug}`);
+  return project;
+};
+const featured = requireProject('midnight-suns-levels');
+const skills = requireProject('dlc-skills');
+const sokoban = requireProject('sokoban');
+const marvel = workGroups.find(group => group.id === 'midnight-suns');
+if (!marvel) throw new Error('Homepage requires the midnight-suns work group');
+const requireMarvelCase = (slug: string) => {
+  const item = marvel.cases.find(item => item.slug === slug);
+  if (!item) throw new Error(`Midnight Suns group requires case ${slug}`);
+  return item;
+};
+const levelCase = requireMarvelCase(featured.slug);
+const skillCase = requireMarvelCase(skills.slug);
+const additionalMarvelCases = marvel.cases.filter(item => ![featured.slug, skills.slug].includes(item.slug));
+const otherWork = workGroups.filter(group => group.id !== marvel.id);
+const homeCover = featured.homeCover || featured.cover;
+const levelCover = featured.cover;
+const skillCover = skills.cover;
+const editorCover = sokoban.sections.find(section => section.id === 'authoring')?.media?.[0] || sokoban.cover;
+if (!homeCover || !levelCover || !skillCover || !editorCover) throw new Error('Homepage project image is missing');
+---
+<Base current="work" lang={lang}>
+  <header class="home-intro wrap">
+    <div class="intro-position"><h1>{lang === 'zh' ? profile.headline.split('｜').map((role, index) => <span class="headline-role">{role}{index === 0 ? '｜' : ''}</span>) : profile.headline}</h1><p>{profile.intro}</p></div>
+    <div class="intro-background"><p>{profile.homeBackground}</p><a class="inline-link" href={purl('resume/')}>{ui.resume} <span aria-hidden="true">↗</span></a></div>
+  </header>
+
+  <section id="work" class="selected-work wrap section-space">
+    <div class="section-heading"><h2>{ui.selectedWork}</h2></div>
+    <article class="work-project featured-project" aria-labelledby="marvel-title">
+      <header class="project-heading">
+        <h3 id="marvel-title">{marvel.title}</h3>
+        <p class="project-subtitle">{marvel.subtitle}</p>
+        <p class="project-type">{marvel.category}</p>
+      </header>
+      <div class="project-content">
+        <div class="project-overview">
+          <p class="project-intro">{marvel.summary}</p>
+          <figure class="project-keyart">
+            <img src={mediaPreview(homeCover)} alt={homeCover.alt} width={homeCover.width} height={homeCover.height} loading="lazy" decoding="async" />
+            <figcaption><a href={homeCover.sourceHref}>{homeCover.source}</a></figcaption>
+          </figure>
+        </div>
+        <div id="marvel-work-title" class="project-cases" role="group" aria-label={ui.projectWork}>
+          <section class="case-preview level-preview" aria-labelledby="marvel-levels-title">
+            <figure class="case-preview-media">
+              <a class="case-preview-image" href={purl(`work/${featured.slug}/`)} aria-label={`${ui.readLevelCase}: ${levelCover.label || featured.title}`}><img src={url(levelCover.src)} srcset={mediaSrcSet(levelCover)} sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1100px) calc((100vw - 338px) * .62), (max-width: 1392px) calc((100vw - 416px) * .62), 604px" alt={levelCover.alt} width={levelCover.width} height={levelCover.height} loading="lazy" decoding="async" /></a>
+              <figcaption class="case-preview-caption">{levelCover.label}</figcaption>
+            </figure>
+            <div class="case-preview-copy"><h4 id="marvel-levels-title">{levelCase.label}</h4><p>{levelCase.preview || featured.summary}</p><a class="inline-link" href={purl(`work/${featured.slug}/`)}>{ui.readLevelCase} <span aria-hidden="true">↗</span></a></div>
+          </section>
+          <section class="case-preview skill-preview" aria-labelledby="marvel-skills-title">
+            <figure class="case-preview-media">
+              <a class="case-preview-image" href={purl(`work/${skills.slug}/`)}><img src={url(skillCover.src)} alt={skillCover.alt} width={skillCover.width} height={skillCover.height} loading="lazy" decoding="async" /></a>
+              {skillCover.animation && <div class="clip-controls"><button class="text-button play-animation" data-animation={url(skillCover.animation)} data-poster={url(skillCover.src)} data-autoplay={skillCover.autoplay ? 'true' : undefined} aria-pressed="false">{ui.playClip}</button><span class="clip-status" role="status"></span></div>}
+            </figure>
+            <div class="case-preview-copy"><h4 id="marvel-skills-title">{skillCase.label}</h4><p>{skillCase.preview || skills.summary}</p><a class="inline-link" href={purl(`work/${skills.slug}/`)}>{ui.readSkillCase} <span aria-hidden="true">↗</span></a></div>
+          </section>
+        </div>
+        {additionalMarvelCases.length > 0 && <nav class="project-links" aria-label={`${marvel.title} · ${ui.caseLinks}`}>{additionalMarvelCases.map(item => <a class="inline-link" href={purl(`work/${item.slug}/`)}>{item.label} <span aria-hidden="true">↗</span></a>)}</nav>}
+      </div>
+    </article>
+    <div class="other-work">{otherWork.map(group => <article class="work-project project-summary" aria-labelledby={`project-${group.id}-title`}>
+      <header class="project-heading"><h3 id={`project-${group.id}-title`}>{group.title}</h3><p class="project-type">{group.category}</p></header>
+      <div class="project-content">
+        <p class="project-intro">{group.summary}</p>
+        {group.id === 'sokoban' && <figure class="prototype-preview-media">
+          <a class="prototype-preview-image" href={purl('work/sokoban/#authoring')} aria-label={`${ui.viewProject}: ${editorCover.label || sokoban.title}`}><img src={url(editorCover.src)} srcset={mediaSrcSet(editorCover)} sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1100px) calc(100vw - 310px), (max-width: 1392px) calc(100vw - 388px), 976px" alt={editorCover.alt} width={editorCover.width} height={editorCover.height} loading="lazy" decoding="async" /></a>
+          <figcaption>{editorCover.label}</figcaption>
+        </figure>}
+        {group.cases.length > 1 ? <nav class="home-case-list" id={`${group.id}-cases-title`} aria-label={`${group.title} · ${ui.projectCases}`}>{group.cases.map(item => <a class="home-case-link" href={purl(`work/${item.slug}/`)}><span><strong>{item.label}</strong><span class="home-case-description">{projects.find(project => project.slug === item.slug)!.summary}</span></span><span class="home-case-arrow" aria-hidden="true">↗</span></a>)}</nav> : <nav class="project-links" aria-label={`${group.title} · ${ui.caseLinks}`}>{group.cases.map(item => <a class="inline-link" href={purl(`work/${item.slug}/`)}>{item.label} <span aria-hidden="true">↗</span></a>)}</nav>}
+        {group.id === 'sokoban' && <p class="evidence-note">{ui.sokobanEvidence}</p>}
+      </div>
+    </article>)}</div>
+  </section>
+
+  <section class="about-preview wrap section-space"><h2>{ui.aboutPreview}</h2><div><p>{profile.approach}</p><a class="inline-link" href={purl('about/')}>{ui.about} <span aria-hidden="true">↗</span></a></div></section>
+</Base>

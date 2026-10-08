@@ -1,0 +1,61 @@
+[
+  {
+    "id": "midnight-suns",
+    "title": "Marvel’s Midnight Suns",
+    "subtitle": "DLC Level Design & Ability Implementation",
+    "category": "Commercial project · Virtuos",
+    "summary": "Designed five maps and ten encounters across the four DLC packs and the bonus Season Pass finale. Also implemented abilities for the four DLC heroes and selected enemies.",
+    "cases": [
+      {
+        "slug": "midnight-suns-levels",
+        "label": "Level design & encounters",
+        "preview": "Planned environmental interactions, knockback paths, and tactical positions around story and combat requirements."
+      },
+      {
+        "slug": "dlc-skills",
+        "label": "Ability Blueprints & debugging",
+        "preview": "Built ability Blueprints for four DLC heroes, connected animation, effects, and UI, and debugged movement, targeting, and state issues."
+      }
+    ]
+  },
+  {
+    "id": "fps-remake",
+    "title": "Unannounced FPS Remake",
+    "category": "Commercial project · Virtuos",
+    "summary": "Built level sequences, spatial guidance, and state restoration, and worked with a programmer on a tool for inspecting legacy events in Unreal.",
+    "cases": [
+      {
+        "slug": "fps-levels",
+        "label": "Level scripting & sequences"
+      },
+      {
+        "slug": "event-tool",
+        "label": "Legacy Level Event Visualizer"
+      }
+    ]
+  },
+  {
+    "id": "mission-photo",
+    "title": "Honor of Kings: World",
+    "category": "Commercial project · Tengyu Interactive",
+    "summary": "Designed a mission photo mode within the existing photo system, specifying when it activates, how targets are checked, and what happens after success.",
+    "cases": [
+      {
+        "slug": "mission-photo",
+        "label": "Photo-based mission design"
+      }
+    ]
+  },
+  {
+    "id": "sokoban",
+    "title": "Sokoban Game Prototype & Level Editor",
+    "category": "Personal project · Unreal Engine",
+    "summary": "Built a three-level prototype with deterministic board rules and Undo, plus an editor for painting, validating, and saving level data.",
+    "cases": [
+      {
+        "slug": "sokoban",
+        "label": "Rules, level editing & debugging"
+      }
+    ]
+  }
+]

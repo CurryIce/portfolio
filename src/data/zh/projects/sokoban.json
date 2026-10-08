@@ -1,0 +1,141 @@
+{
+  "slug": "sokoban",
+  "title": "推箱子游戏原型与关卡编辑器",
+  "subtitle": "Sokoban · 个人 Unreal Engine 项目",
+  "category": "个人项目",
+  "tags": [
+    "Unreal C++",
+    "蓝图",
+    "Editor Utility Widget"
+  ],
+  "summary": "制作三关推箱子原型，分离棋盘规则与场景表现，并用 EUW 完成关卡绘制、验证、裁剪和保存。",
+  "description": "使用 Unreal Engine 5.5.4 制作三关推箱子游戏原型，配套 Editor Utility Widget 关卡编辑器。C++ 负责规则与棋盘状态，Blueprint 负责输入、场景、相机、UI 和游戏流程。",
+  "role": "独立开发（AI 辅助）",
+  "company": "个人项目",
+  "period": "2026",
+  "status": "三关游戏原型，工程已公开",
+  "cover": {
+    "src": "media/sokoban-gameplay.webp",
+    "alt": "推箱子原型第 3 关游戏画面，显示棋盘、箱子、目标、撤销和重开按钮",
+    "width": 1219,
+    "height": 918,
+    "label": "第 3 关游戏画面",
+    "caption": "第 3/3 关，包含返回主菜单、撤销与重新开始操作。",
+    "source": "GitHub 项目截图",
+    "sourceHref": "https://github.com/CurryIce/Sokoban/blob/53582d3ae53bed6ce560e78a2bc2034f11e276b1/Docs/Images/gameplay.png",
+    "srcSmall": "media/sokoban-gameplay-small.webp",
+    "widthSmall": 840,
+    "heightSmall": 633
+  },
+  "ownership": [
+    "完成三关游戏原型，以及主菜单、关卡切换、撤销、重开和通关流程。",
+    "确定 C++ 规则层与蓝图表现层的分工，借助 AI 完成代码实现，负责引擎集成、蓝图制作和调试。",
+    "制作 EUW 关卡编辑器，加入绘制、数据验证、自动裁剪、保存与重新读取功能。"
+  ],
+  "evidence": "第 3 关游戏画面。源码工程与关卡编辑器截图见 GitHub。",
+  "sections": [
+    {
+      "id": "rule-state",
+      "title": "规则与表现分开",
+      "intro": "推箱和撤销必须有确定的结果。我把棋盘状态放在 C++ 中，蓝图读取结果来更新场景；碰撞和 Actor 位置不参与规则判定。",
+      "points": [
+        {
+          "title": "关卡数据",
+          "text": "Data Asset 保存初始地形与占用信息，开始关卡时复制为运行状态。"
+        },
+        {
+          "title": "地形与占用",
+          "text": "地形与玩家、箱子的占用状态分开存放，目标格上的箱子不会覆盖目标信息。"
+        },
+        {
+          "title": "移动判定",
+          "text": "先检查边界、地形和占用，再提交移动，并将结果返回蓝图。"
+        },
+        {
+          "title": "撤销与重开",
+          "text": "有效移动前保存棋盘与玩家位置快照。撤销时恢复快照，无效移动不记入历史。"
+        }
+      ],
+      "paragraphs": [
+        "关卡最多 22 × 22 格，使用数组、完整状态快照和全量表现刷新已经足够。我优先让数据容易检查和恢复，避免为这个规模引入更复杂的结构。"
+      ]
+    },
+    {
+      "id": "authoring",
+      "title": "绘制与保存关卡",
+      "intro": "我用 22 × 22 的 EUW 画布代替手动填写关卡尺寸与 Cells 数组。",
+      "steps": [
+        "绘制地形与占用对象",
+        "运行共用数据验证",
+        "阻止错误，并要求确认警告",
+        "裁剪到非 Void 区域的包围盒并归一化坐标",
+        "保存并重新读取关卡资产"
+      ],
+      "paragraphs": [
+        "新建关卡时先创建或复制 Data Asset，再在编辑器中绘制。存在错误时阻止保存，存在警告时要求确认；保存时自动裁剪外围空白，并写回资产。",
+        "编辑器与运行时共用关卡数据验证，绘制后保存并重新读取，确认写回资产的结果。数据验证检查的是配置有效性，并不保证关卡一定可解。"
+      ],
+      "media": [
+        {
+          "src": "media/sokoban-level-editor.webp",
+          "alt": "推箱子关卡编辑器，读取 DA_Level_02 资产，在绘制画布中显示地形、玩家和箱子，关卡验证通过",
+          "width": 1776,
+          "height": 1043,
+          "label": "关卡编辑器：绘制与验证",
+          "caption": "读取 DA_Level_02 后的画布与验证通过状态。",
+          "source": "GitHub 项目截图",
+          "sourceHref": "https://github.com/CurryIce/Sokoban/blob/53582d3ae53bed6ce560e78a2bc2034f11e276b1/Docs/Images/level-editor.png",
+          "srcSmall": "media/sokoban-level-editor-small.webp",
+          "widthSmall": 840,
+          "heightSmall": 493
+        }
+      ]
+    },
+    {
+      "id": "coordinate-debug",
+      "title": "一次坐标翻转的排查",
+      "intro": "同一张关卡在 EUW 画布中显示正确，进入游戏后却上下翻转。问题出在逻辑坐标转为世界位置的过程。",
+      "points": [
+        {
+          "title": "定位问题",
+          "text": "棋盘规则和 UMG 画布使用的逻辑坐标一致，翻转发生在场景表现的坐标映射。"
+        },
+        {
+          "title": "修正映射",
+          "text": "在实例位置与相机中心的世界坐标映射中适配 Y 方向，保留规则层的数组公式和逻辑坐标。"
+        },
+        {
+          "title": "处理输入",
+          "text": "相机位置、场景位置和输入方向分别处理，避免修正画面后又让 W/S 移动反向。"
+        }
+      ]
+    },
+    {
+      "id": "gameplay",
+      "title": "可玩原型的范围",
+      "intro": "三张关卡由 Data Asset 配置内容和游玩顺序，串起主菜单、关卡切换与最终通关。",
+      "paragraphs": [
+        "WASD 或方向键移动，Z 撤销，R 重新开始。支持不同尺寸和非矩形关卡，相机根据关卡尺寸调整。"
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "确认工程可以从源码重建",
+      "intro": "开发完成后，我检查工程是否依赖本机缓存或开发辅助插件，确保交付的是可以重新构建的源码工程。",
+      "paragraphs": [
+        "我在独立克隆副本中进行验证。副本不包含项目的 Binaries、Intermediate 或本机 VisualStudioTools 插件，从源码重新编译 Development Editor，随后运行游戏和 EUW 关卡编辑器。",
+        "另外从 GitHub 远程克隆工程，检查 Git LFS 资源完整性，确认关卡资产与截图是实际文件，并将引擎版本、编译步骤和运行方式写进 README。"
+      ],
+      "note": "这里验证的是编辑器工程的重建与运行。运行环境和操作步骤见页面顶部的 GitHub 工程链接。"
+    }
+  ],
+  "outcomes": [
+    "完成可玩的三关原型，以及撤销、重开和菜单到通关的流程。",
+    "完成关卡绘制、验证、裁剪、保存与重新读取功能，并公开源码工程。"
+  ],
+  "limitations": [
+    "当前使用基础模型和占位材质，尚未加入存档、关卡选择、音效与移动动画。",
+    "编辑器直接编辑已有关卡资产，暂不支持从画布直接试玩。"
+  ],
+  "repositoryUrl": "https://github.com/CurryIce/Sokoban"
+}

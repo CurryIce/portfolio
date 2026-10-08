@@ -1,0 +1,66 @@
+{
+  "slug": "mission-photo",
+  "title": "Photo-Based Mission Design",
+  "subtitle": "Honor of Kings: World",
+  "category": "Commercial project",
+  "tags": [
+    "Mission gameplay",
+    "System reuse",
+    "Requirements design"
+  ],
+  "summary": "Designed a mission mode within the existing photo system, specifying activation, target checks, and exit behavior.",
+  "description": "Mission photography needed familiar photo controls alongside task-specific success checks. I documented the flow, selected the features to reuse, and coordinated with mission designers, programmers, and the production team.",
+  "role": "Gameplay design & production coordination",
+  "company": "Tengyu Interactive",
+  "period": "Mar – Jun 2026",
+  "status": "Core playable version",
+  "cover": null,
+  "ownership": [
+    "Defined the mission photo mode with a mentor, documented requirements and flow, and coordinated with mission designers, programmers, and the production team.",
+    "Specified activation, task and target display, photo checks, success handling, and exit behavior.",
+    "Defined a feature allowlist and reused the existing recognition, occlusion checks, and event-editor capabilities."
+  ],
+  "evidence": "Activation, target checks, and exit handling for mission photography.",
+  "sections": [
+    {
+      "id": "reuse",
+      "title": "A mission mode within the existing photo system",
+      "intro": "The regular photo system already had many features. Inheriting all of them would add unnecessary cases, while building a separate system would duplicate maintenance.",
+      "paragraphs": [
+        "I treated mission photography as a special mode within the existing system. It retained the existing controls and programming capabilities, with a feature allowlist defining what the mode could use.",
+        "This let us reuse the system while documenting task-specific target display, success checks, and completion behavior separately, without extending every regular photo feature to mission use."
+      ]
+    },
+    {
+      "id": "mission-flow",
+      "title": "Activation, target checks, and exit handling",
+      "points": [
+        {
+          "title": "Activation",
+          "text": "Activate mission mode based on the tracked mission and its configured trigger area. Skip the area check if the mission has no assigned area."
+        },
+        {
+          "title": "Targets and capture",
+          "text": "Display the current task and targets in photo mode. On capture, use existing recognition and occlusion checks to determine completion."
+        },
+        {
+          "title": "Completion and exit",
+          "text": "Define success, failure, and exit handling separately, including preventing another capture after the task succeeds."
+        }
+      ]
+    },
+    {
+      "id": "target-checks",
+      "title": "Removing unnecessary capture restrictions",
+      "intro": "We initially considered limits on distance, angle, frame position, and target size. We ultimately kept only the occlusion requirement.",
+      "paragraphs": [
+        "Those limits would require extra rules for different camera positions and more implementation work. I focused the checks on whether the target was captured effectively, using the existing recognition and occlusion checks.",
+        "I documented edge cases in flow diagrams, confirmed their handling during reviews, and checked the implementation with the production team."
+      ]
+    }
+  ],
+  "outcomes": [
+    "Delivered the flow and requirements for mission photography, including feature reuse and handling for success, failure, and exit."
+  ],
+  "limitations": []
+}

@@ -1,0 +1,141 @@
+{
+  "slug": "sokoban",
+  "title": "Sokoban Game Prototype & Level Editor",
+  "subtitle": "A personal Unreal Engine project",
+  "category": "Personal project",
+  "tags": [
+    "Unreal C++",
+    "Blueprints",
+    "Editor Utility Widget"
+  ],
+  "summary": "Built a three-level Sokoban prototype with separate board rules and scene presentation, plus an EUW editor for painting, validating, cropping, and saving levels.",
+  "description": "A three-level Sokoban game prototype in Unreal Engine 5.5.4, paired with an Editor Utility Widget level editor. C++ handles rules and board state; Blueprint handles input, scene generation, camera, UI, and game flow.",
+  "role": "Solo development with AI assistance",
+  "company": "Personal project",
+  "period": "2026",
+  "status": "Three-level game prototype; public source",
+  "cover": {
+    "src": "media/sokoban-gameplay.webp",
+    "alt": "Third-level gameplay in the Sokoban prototype, showing the board, boxes, goals, Undo, and Restart",
+    "width": 1219,
+    "height": 918,
+    "label": "Gameplay: level 3",
+    "caption": "Level 3 of 3, with return-to-menu, Undo, and Restart controls.",
+    "source": "GitHub project screenshot",
+    "sourceHref": "https://github.com/CurryIce/Sokoban/blob/53582d3ae53bed6ce560e78a2bc2034f11e276b1/Docs/Images/gameplay.png",
+    "srcSmall": "media/sokoban-gameplay-small.webp",
+    "widthSmall": 840,
+    "heightSmall": 633
+  },
+  "ownership": [
+    "Built the three-level prototype and its main menu, level transitions, Undo, Restart, and completion flow.",
+    "Defined the split between C++ rules and Blueprint presentation, used AI to assist with code implementation, and handled Unreal integration, Blueprints, and debugging.",
+    "Built the EUW level editor with painting, validation, automatic cropping, saving, and reloading."
+  ],
+  "evidence": "Gameplay from level 3. Source files and the level editor screenshot are available on GitHub.",
+  "sections": [
+    {
+      "id": "rule-state",
+      "title": "Separating rules from presentation",
+      "intro": "Pushing and Undo need deterministic results. I keep the board state in C++ and let Blueprints update the scene from it. Collision and Actor positions do not decide the rules.",
+      "points": [
+        {
+          "title": "Level data",
+          "text": "A Data Asset stores the starting terrain and occupancy, which are copied into the runtime state when a level begins."
+        },
+        {
+          "title": "Terrain and occupancy",
+          "text": "Store terrain separately from player and box occupancy, so a box on a goal does not overwrite the goal data."
+        },
+        {
+          "title": "Move validation",
+          "text": "Check boundaries, terrain, and occupancy before committing a move, then return the result to Blueprint."
+        },
+        {
+          "title": "Undo and restart",
+          "text": "Save a board and player-position snapshot before each valid move. Undo restores that snapshot; invalid moves do not enter the history."
+        }
+      ],
+      "paragraphs": [
+        "At a maximum of 22 × 22 cells, arrays, full snapshots, and complete scene refreshes are sufficient. I prioritized data that is easy to inspect and restore over more complex structures."
+      ]
+    },
+    {
+      "id": "authoring",
+      "title": "Painting and saving levels",
+      "intro": "I replaced manual level dimensions and Cells arrays with a 22 × 22 EUW canvas.",
+      "steps": [
+        "Paint terrain and occupants",
+        "Run the shared data validation",
+        "Block errors and confirm warnings",
+        "Crop to the non-Void bounds and normalize coordinates",
+        "Save and reload the level asset"
+      ],
+      "paragraphs": [
+        "To make a new level, create or duplicate a Data Asset and paint it in the editor. Errors block saving and warnings require confirmation. Saving crops the empty outer area and writes the result back to the asset.",
+        "The editor and runtime share level-data validation. Saving and reloading lets me check what was written to the asset. Validation checks the configuration, not whether the puzzle is solvable."
+      ],
+      "media": [
+        {
+          "src": "media/sokoban-level-editor.webp",
+          "alt": "Sokoban level editor with DA_Level_02 loaded, a painted terrain and occupancy canvas, and successful validation",
+          "width": 1776,
+          "height": 1043,
+          "label": "Level editor: painting and validation",
+          "caption": "DA_Level_02 loaded on the canvas with successful validation.",
+          "source": "GitHub project screenshot",
+          "sourceHref": "https://github.com/CurryIce/Sokoban/blob/53582d3ae53bed6ce560e78a2bc2034f11e276b1/Docs/Images/level-editor.png",
+          "srcSmall": "media/sokoban-level-editor-small.webp",
+          "widthSmall": 840,
+          "heightSmall": 493
+        }
+      ]
+    },
+    {
+      "id": "coordinate-debug",
+      "title": "Tracking down an inverted board",
+      "intro": "A level looked correct on the EUW canvas but appeared vertically inverted in the game. The problem was in the conversion from logical coordinates to world positions.",
+      "points": [
+        {
+          "title": "Locate the mismatch",
+          "text": "The board rules and UMG canvas agreed on logical coordinates. The inversion occurred in the scene’s coordinate mapping."
+        },
+        {
+          "title": "Correct the mapping",
+          "text": "Adapt the Y direction when mapping instance positions and the camera center into world space, while keeping the core array formula and logical coordinates unchanged."
+        },
+        {
+          "title": "Keep input separate",
+          "text": "Handle camera placement, scene placement, and input directions separately, so correcting the view does not also reverse W/S movement."
+        }
+      ]
+    },
+    {
+      "id": "gameplay",
+      "title": "Playable prototype scope",
+      "intro": "Data Assets define the three levels and their play order, connecting the main menu, level transitions, and final completion.",
+      "paragraphs": [
+        "Move with WASD or the arrow keys, Undo with Z, and Restart with R. Levels can have different sizes and non-rectangular layouts, with the camera adjusting to fit."
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Rebuilding the project from source",
+      "intro": "At the end of development, I checked for dependencies on local caches or development plugins so the source project could be rebuilt independently.",
+      "paragraphs": [
+        "I verified an independent clone without the project’s Binaries, Intermediate files, or my local VisualStudioTools plugin. I rebuilt Development Editor from source, then ran the game and EUW level editor.",
+        "I also cloned the GitHub repository, checked Git LFS integrity, and confirmed that level assets and screenshots were actual files. The README documents the engine version, build steps, and how to run the project."
+      ],
+      "note": "These checks covered rebuilding and running the editor project. The GitHub project link at the top of this page has the setup and controls."
+    }
+  ],
+  "outcomes": [
+    "Completed three playable levels with Undo, Restart, and a menu-to-completion flow.",
+    "Built level painting, validation, cropping, saving, and reloading, and published the source project."
+  ],
+  "limitations": [
+    "The current version uses basic models and placeholder materials, without save data, level selection, sound effects, or movement animation.",
+    "The editor edits existing level assets and does not yet support playing directly from the canvas."
+  ],
+  "repositoryUrl": "https://github.com/CurryIce/Sokoban"
+}

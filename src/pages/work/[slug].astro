@@ -1,0 +1,8 @@
+---
+import Case from '../../views/Case.astro';
+import { getContent, type Project } from '../../lib/content';
+export function getStaticPaths() { return getContent('zh').projects.map(project => ({ params: {slug: project.slug}, props: {project} })); }
+interface Props { project: Project; }
+const { project } = Astro.props;
+---
+<Case project={project} lang="zh" />

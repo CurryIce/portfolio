@@ -1,0 +1,11 @@
+---
+import { getUI, type Lang } from '../lib/i18n';
+interface Props { title: string; text: string; lang?: Lang; }
+const { title, text, lang = 'zh' } = Astro.props;
+const ui = getUI(lang);
+---
+<aside class="asset-placeholder" aria-label={ui.materialToAdd}>
+  <span class="placeholder-label">{ui.materialToAdd}</span>
+  <h3>{title}</h3>
+  <p>{text}</p>
+</aside>

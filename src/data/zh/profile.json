@@ -1,0 +1,104 @@
+{
+  "name": "许嘉麟",
+  "email": "currygalixu@foxmail.com",
+  "headline": "关卡策划｜玩法策划",
+  "intro": "关卡空间设计、蓝图玩法实现与面向策划的 Unreal 工具开发。",
+  "homeBackground": "我有五年商业游戏策划经验，在维塔士做过海外单机项目的关卡和技能，也参与了《王者荣耀世界》的任务玩法设计。日常使用 Unreal 蓝图制作玩法，并开发关卡编辑与检查工具。",
+  "resumes": [
+    {
+      "id": "level-cn",
+      "src": "files/许嘉麟 关卡策划简历 26-9.pdf",
+      "title": "关卡策划",
+      "description": "空间布局、战斗遭遇与从白盒到上线的关卡制作。",
+      "language": "zh",
+      "pages": 1,
+      "downloadLabel": "下载关卡策划 PDF",
+      "downloadName": "Jialin-Xu-Level-Design-CN.pdf"
+    },
+    {
+      "id": "gameplay-prototype-cn",
+      "src": "files/许嘉麟｜游戏策划.pdf",
+      "title": "游戏策划 · AI辅助原型开发",
+      "description": "任务玩法、技能蓝图、推箱子原型与关卡编辑器，含 AI 辅助开发经历。",
+      "language": "zh",
+      "pages": 2,
+      "downloadLabel": "下载游戏策划 PDF",
+      "downloadName": "Jialin-Xu-Game-Design-AI-Assisted-Prototyping-CN.pdf"
+    },
+    {
+      "id": "gameplay-level-en",
+      "src": "files/JialinXu Gameplay & Level Designer.pdf",
+      "title": "玩法与关卡策划 · 英文版",
+      "description": "关卡与玩法设计、蓝图实现和策划工具开发。",
+      "language": "en",
+      "pages": 2,
+      "downloadLabel": "下载英文综合版 PDF",
+      "downloadName": "Jialin-Xu-Gameplay-Level-Design-EN.pdf"
+    }
+  ],
+  "about": "我的工作包括《漫威暗夜之子》的 DLC 关卡和技能、《王者荣耀世界》的任务玩法，以及 FPS 重制项目的关卡逻辑与事件检查工具。平时也会做个人原型，尝试玩法规则和关卡编辑流程。",
+  "approach": "设计时，我先明确玩家要做什么、会看到什么，再决定空间、交互和规则。进入引擎后，我会把流程跑通，检查异常情况，并和程序、美术一起解决制作问题。",
+  "aboutFocus": [
+    {
+      "title": "战斗空间",
+      "text": "在《漫威暗夜之子》中，我用爆炸物、眩晕交互和跌落区域给玩家提供战术选择。制作关卡前，先用纸面草稿推敲战斗区域、视线和前后衔接空间。",
+      "links": [
+        {
+          "slug": "midnight-suns-levels",
+          "label": "DLC 关卡设计"
+        }
+      ]
+    },
+    {
+      "title": "任务玩法",
+      "text": "任务拍照需要复用普通拍照的操作，同时按任务目标判定结果。我用功能白名单确定复用范围，再梳理进入条件、目标显示、成功和退出后的处理。",
+      "links": [
+        {
+          "slug": "mission-photo",
+          "label": "任务拍照玩法设计"
+        }
+      ]
+    },
+    {
+      "title": "技能实现",
+      "text": "在 DLC 技能制作中，我把蓝图、动画、特效与 UI 连成从选中目标到技能结束的流程，并用断点排查位移、目标过滤和状态问题。",
+      "links": [
+        {
+          "slug": "dlc-skills",
+          "label": "DLC技能蓝图"
+        }
+      ]
+    },
+    {
+      "title": "关卡工具",
+      "text": "旧关卡事件难以查找时，我和程序一起做了脚本解析与可视化工具。推箱子原型中，我制作了绘制、验证和保存关卡的编辑器，让关卡制作不必逐项修改数据数组。",
+      "links": [
+        {
+          "slug": "event-tool",
+          "label": "旧关卡事件可视化工具"
+        },
+        {
+          "slug": "sokoban",
+          "label": "推箱子关卡编辑器"
+        }
+      ]
+    }
+  ],
+  "education": "加州大学圣克鲁斯分校",
+  "degree": "计算机科学（游戏设计方向）",
+  "educationPeriod": "2016–2020",
+  "experience": [
+    {
+      "company": "腾娱互动",
+      "role": "玩法策划",
+      "period": "2026.03–2026.06",
+      "description": "参与《王者荣耀世界》的任务拍照设计，整理流程与需求，并协调倒计时功能的 UI、动效与音频制作。"
+    },
+    {
+      "company": "维塔士",
+      "role": "游戏策划",
+      "period": "2020.11–2025.07",
+      "description": "制作《漫威暗夜之子》DLC 关卡与技能，参与 FPS 重制项目的关卡逻辑和策划工具开发。"
+    }
+  ]
+}

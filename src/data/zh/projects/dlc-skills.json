@@ -1,0 +1,81 @@
+{
+  "slug": "dlc-skills",
+  "title": "DLC技能蓝图",
+  "subtitle": "漫威暗夜之子",
+  "category": "商业项目",
+  "tags": [
+    "蓝图脚本",
+    "玩法实现",
+    "调试"
+  ],
+  "summary": "制作四名 DLC 英雄的技能蓝图，接入动画、特效与 UI，并排查位移、目标过滤和状态问题。",
+  "description": "我负责四名 DLC 英雄及部分敌人的技能实现，完成蓝图配置、表现接入与联调。下文以死侍（Deadpool）的技能制作和调试为例。",
+  "role": "技能实现与调试",
+  "company": "维塔士",
+  "period": "2021.07–2023.02",
+  "status": "DLC 已发售",
+  "cover": {
+    "src": "media/dlc-skill-poster.webp",
+    "alt": "《漫威暗夜之子》中死侍释放火焰攻击的技能演示",
+    "width": 600,
+    "height": 562,
+    "animation": "media/dlc-skill.gif",
+    "autoplay": true,
+    "label": "DLC 技能演示",
+    "source": "游戏演示片段",
+    "srcSmall": "media/dlc-skill-poster-small.webp",
+    "widthSmall": 600,
+    "heightSmall": 562
+  },
+  "ownership": [
+    "根据客户提供的技能规则与数值，在现有框架中实现四名 DLC 英雄及部分敌人的技能。",
+    "接入动画、特效、UI 和技能结束处理，完成从选中目标到伤害结算的流程。",
+    "用蓝图断点定位问题，修正角色位移、目标过滤、重复 UI 和特殊敌人状态。"
+  ],
+  "evidence": "《漫威暗夜之子》DLC 技能演示画面。",
+  "sections": [
+    {
+      "id": "skill-sequence",
+      "title": "死侍的技能流程",
+      "intro": "制作 Burning Sensation 时，我接入了接近目标、动画、背景遮罩、受击、火焰特效与 UI，并在技能结束后恢复正常战斗视图。",
+      "steps": [
+        "接近并朝向选中的目标",
+        "启动遮罩与攻击动画",
+        "通过动画 Notify 驱动受击表现",
+        "在攻击序列结束后统一结算一次伤害",
+        "清理特效并结束技能"
+      ]
+    },
+    {
+      "id": "compatibility",
+      "title": "修正死侍的位移",
+      "intro": "调整 Root Motion 后，死侍的位移仍然异常。我用蓝图断点查到母蓝图中的角色专用位置处理。",
+      "paragraphs": [
+        "通用重构不在本轮 DLC 的计划内。我加入死侍专用分支，修正该角色的位移，并保留其他角色的原有处理。"
+      ]
+    },
+    {
+      "id": "configuration",
+      "title": "配置与联调",
+      "points": [
+        {
+          "title": "目标过滤",
+          "text": "修正允许无效目标的过滤配置，解决技能播放动画却不产生预期效果的问题。"
+        },
+        {
+          "title": "重复 UI",
+          "text": "母蓝图已经处理 UI，删除子技能中重复的调用。"
+        },
+        {
+          "title": "敌人状态",
+          "text": "修正特殊敌人的嘲讽动画状态，并补齐相关技能的配置。"
+        }
+      ]
+    }
+  ],
+  "outcomes": [
+    "完成的英雄与敌人技能随 DLC 上线。",
+    "解决位移兼容、无效目标、重复 UI 与特殊敌人状态问题。"
+  ],
+  "limitations": []
+}

@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Placeholder from '../components/Placeholder.astro';
+import { getContent, pageUrl, url } from '../lib/content';
+import { getUI, type Lang } from '../lib/i18n';
+interface Props { lang?: Lang; }
+const { lang = 'zh' } = Astro.props;
+const { profile, workGroups } = getContent(lang);
+const ui = getUI(lang);
+const purl = (path = '') => pageUrl(path, lang);
+const pdfUrl = (path: string) => url(path.split('/').map(encodeURIComponent).join('/'));
+---
+<Base title={ui.resume} current="resume" lang={lang}>
+  <div class="wrap inner-page resume-page"><header class="inner-header"><p class="eyebrow">{ui.resume}</p><h1>{profile.name}</h1><p>{ui.resumeIntro}</p></header>
+    {profile.resumes.length > 0 ? <section id="downloads" class="resume-downloads" aria-labelledby="resume-downloads-title">
+      <h2 id="resume-downloads-title">{ui.resumeDownloads}</h2><p class="downloads-intro">{ui.chooseResume}</p>
+      <div class="resume-download-list">{profile.resumes.map(resume => <article>
+        <div><p class="resume-file-meta">PDF · {resume.language === 'zh' ? ui.chineseFile : ui.englishFile} · {resume.pages} {resume.pages === 1 ? ui.page : ui.pages}</p><h3>{resume.title}</h3><p class="resume-file-description">{resume.description}</p></div>
+        <a class="button" href={pdfUrl(resume.src)} download={resume.downloadName} aria-label={`${resume.downloadLabel}: ${resume.title} (${resume.language === 'zh' ? ui.chineseFile : ui.englishFile})`}>{resume.downloadLabel} <span aria-hidden="true">↓</span></a>
+      </article>)}</div>
+    </section> : <Placeholder lang={lang} title={ui.resumePlaceholder} text={ui.resumePlaceholderText} />}
+    <section class="experience-section"><h2>{ui.experience}</h2><div class="experience-list">{profile.experience.map(job => <article><div><h3>{job.company}</h3><p>{job.role}</p></div><div><p class="job-period">{job.period}</p><p>{job.description}</p></div></article>)}</div></section>
+    <section class="resume-projects"><h2>{ui.selectedProjects}</h2>{workGroups.map(group => <article><h3>{group.title}</h3><p>{group.summary}</p><nav class="project-links" aria-label={`${group.title} · ${ui.caseLinks}`}>{group.cases.map(item => <a class="inline-link" href={purl(`work/${item.slug}/`)}>{item.label} <span aria-hidden="true">↗</span></a>)}</nav></article>)}</section>
+    <section class="education-section"><h2>{ui.education}</h2><div><h3>{profile.education}</h3><p>{profile.degree}</p><p class="muted">{profile.educationPeriod}</p></div></section>
+  </div>
+</Base>

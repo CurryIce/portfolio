@@ -1,0 +1,59 @@
+{
+  "slug": "fps-levels",
+  "title": "FPS Level Scripting & Sequences",
+  "subtitle": "Unannounced FPS Remake",
+  "category": "Commercial project",
+  "tags": [
+    "Spatial guidance",
+    "Blueprints",
+    "Sequences",
+    "State restoration"
+  ],
+  "summary": "Built whitebox layouts and scripting for a reveal space, adapted a dark encounter sequence, and connected lighting, enemy activation, and level-state restoration.",
+  "description": "For an FPS remake, I connected spatial layouts, lighting, Sequences, and triggers into playable level flows, adapting their timing to the new engine and handling state restoration after loading.",
+  "role": "Spatial design, level scripting & sequences",
+  "company": "Virtuos",
+  "period": "Jul 2023 – Feb 2025",
+  "status": "In daily builds; reviewed by the team and client",
+  "cover": null,
+  "ownership": [
+    "Built the design document, whitebox, device layout, Sequences, and Blueprints for a reveal space based on the agreed interaction direction, and specified lighting and sound needs.",
+    "Adapted the layout and timing of a dark encounter, connecting lighting Blueprints, emissive materials, and triggers with enemy activation.",
+    "Integrated with the existing save framework, restored key level states using completion flags, and worked with lighting artists, programmers, and QA on testing."
+  ],
+  "evidence": "Level flows entered daily builds and went through multiple team and client reviews.",
+  "sections": [
+    {
+      "id": "spatial-guidance",
+      "title": "Making key information visible",
+      "intro": "A reveal space needed to draw attention to key information while keeping the player’s camera free.",
+      "paragraphs": [
+        "In the whitebox, I adjusted the relationship between the information source, the player’s route, and their view. I then connected the interaction devices, Sequences, and Blueprints, using what the player would see to guide lighting and sound requests.",
+        "My initial proposal changed too much of the surrounding flow and was declined in review. I kept the original sequence position and made local changes to the layout, presentation, and field of view. The document and whitebox passed review and moved into further production."
+      ]
+    },
+    {
+      "id": "lighting-sequence",
+      "title": "Adapting movement and lighting timing",
+      "intro": "Changes to camera height, movement speed, and sprinting affected the original dark encounter’s timing. UE5 exposure adaptation also changed when the player could see the environment.",
+      "paragraphs": [
+        "I adjusted the space and trigger timing, used Timelines for lighting and emissive materials, and worked with lighting artists on exposure. Triggers activated enemy AI to connect the lighting changes with the start of combat.",
+        "I assembled the triggers, sequences, and enemy activation into a playable flow, then addressed issues through daily-build reviews and QA checks."
+      ]
+    },
+    {
+      "id": "state-restoration",
+      "title": "Restoring the level after loading",
+      "intro": "Lighting, materials, enemy positions, and AI needed to match the current level stage after a save was loaded.",
+      "paragraphs": [
+        "I recorded completion flags for the level stages and restored their key world states during level initialization, using the existing save framework.",
+        "This restored the level state for completed stages. Loading midway through a Sequence still replayed it from the beginning; restoring progress within a Sequence was not implemented."
+      ]
+    }
+  ],
+  "outcomes": [
+    "The reveal-space document and whitebox passed review, entered daily builds, and were approved for further production.",
+    "The dark encounter flow entered daily builds and went through multiple team and client reviews and QA checks."
+  ],
+  "limitations": []
+}

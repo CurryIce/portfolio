@@ -1,0 +1,109 @@
+{
+  "name": "Jialin Xu",
+  "nativeName": "许嘉麟",
+  "headline": "Level &\nGameplay Design",
+  "intro": "Spatial design, Blueprint gameplay implementation, and Unreal tools for designers.",
+  "homeBackground": "I’m a level and gameplay designer with five years of professional experience. At Virtuos, I worked on single-player levels and character abilities; on Honor of Kings: World, I worked on mission gameplay. I also build Unreal tools for level editing and inspection.",
+  "email": "jialincurryxu@gmail.com",
+  "phone": "+86 181 3612 3672",
+  "phoneHref": "tel:+8618136123672",
+  "resumes": [
+    {
+      "id": "gameplay-level-en",
+      "src": "files/JialinXu Gameplay & Level Designer.pdf",
+      "title": "Gameplay & Level Design",
+      "description": "Level and gameplay design, Blueprint implementation, and tools for designers.",
+      "language": "en",
+      "pages": 2,
+      "downloadLabel": "Download English CV",
+      "downloadName": "Jialin-Xu-Gameplay-Level-Design-EN.pdf"
+    },
+    {
+      "id": "level-cn",
+      "src": "files/许嘉麟 关卡策划简历 26-9.pdf",
+      "title": "Level Design",
+      "description": "Spatial layouts, combat encounters, and level production from whitebox to release.",
+      "language": "zh",
+      "pages": 1,
+      "downloadLabel": "Download Level Design CV",
+      "downloadName": "Jialin-Xu-Level-Design-CN.pdf"
+    },
+    {
+      "id": "gameplay-prototype-cn",
+      "src": "files/许嘉麟｜游戏策划.pdf",
+      "title": "Game Design & AI-Assisted Prototyping",
+      "description": "Mission gameplay, ability Blueprints, and a Sokoban prototype and level editor, including AI-assisted development.",
+      "language": "zh",
+      "pages": 2,
+      "downloadLabel": "Download Game Design CV",
+      "downloadName": "Jialin-Xu-Game-Design-AI-Assisted-Prototyping-CN.pdf"
+    }
+  ],
+  "linkedin": "",
+  "github": "",
+  "about": "I’ve worked on DLC levels and abilities for Marvel’s Midnight Suns, mission gameplay for Honor of Kings: World, and level scripting and event-inspection tools for an FPS remake. I also build personal prototypes to explore gameplay rules and level editing.",
+  "approach": "I start by deciding what the player should do and notice, then work out the space, interactions, and rules. In the engine, I get the flow playable, check edge cases, and work with programmers and artists to resolve production issues.",
+  "aboutFocus": [
+    {
+      "title": "Combat spaces",
+      "text": "In Midnight Suns, I used explosives, stun interactions, and fall zones to give players tactical options. Before building a level, I worked through the combat areas, sightlines, and connecting spaces on paper.",
+      "links": [
+        {
+          "slug": "midnight-suns-levels",
+          "label": "DLC level design"
+        }
+      ]
+    },
+    {
+      "title": "Mission gameplay",
+      "text": "Mission photography needed familiar photo controls and task-specific success checks. I used a feature allowlist to define what to reuse, then specified activation, target display, and completion and exit handling.",
+      "links": [
+        {
+          "slug": "mission-photo",
+          "label": "Photo-based mission design"
+        }
+      ]
+    },
+    {
+      "title": "Ability implementation",
+      "text": "For DLC abilities, I connected Blueprints, animation, effects, and UI into a flow from target selection to completion, then used breakpoints to resolve movement, target-filtering, and state issues.",
+      "links": [
+        {
+          "slug": "dlc-skills",
+          "label": "DLC Skill Blueprints"
+        }
+      ]
+    },
+    {
+      "title": "Level tools",
+      "text": "When legacy events were difficult to inspect, I worked with a programmer on a script parser and visualization tool. For Sokoban, I built an editor for painting, validating, and saving levels so they could be authored without editing data arrays by hand.",
+      "links": [
+        {
+          "slug": "event-tool",
+          "label": "Legacy Level Event Visualizer"
+        },
+        {
+          "slug": "sokoban",
+          "label": "Sokoban level editor"
+        }
+      ]
+    }
+  ],
+  "education": "University of California, Santa Cruz",
+  "degree": "Computer Science: Computer Game Design",
+  "educationPeriod": "2016–2020",
+  "experience": [
+    {
+      "company": "Tengyu Interactive",
+      "role": "Gameplay Designer",
+      "period": "Mar – Jun 2026",
+      "description": "Designed photo-based mission gameplay for Honor of Kings: World, documented requirements, and coordinated UI, motion, and audio work for a countdown feature."
+    },
+    {
+      "company": "Virtuos",
+      "role": "Game Designer",
+      "period": "Nov 2020 – Jul 2025",
+      "description": "Built DLC levels and abilities for Marvel’s Midnight Suns, and worked on level scripting and designer tools for an FPS remake."
+    }
+  ]
+}

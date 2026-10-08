@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import MediaFigure from '../components/MediaFigure.astro';
+import { getContent, pageUrl, type Project } from '../lib/content';
+import { getUI, type Lang } from '../lib/i18n';
+interface Props { project: Project; lang?: Lang; }
+const { project, lang = 'zh' } = Astro.props;
+const { projects, workGroups } = getContent(lang);
+const group = workGroups.find(item => item.cases.some(item => item.slug === project.slug));
+const ui = getUI(lang);
+const purl = (path = '') => pageUrl(path, lang);
+const next = projects[(projects.findIndex(item => item.slug === project.slug) + 1) % projects.length];
+---
+<Base title={project.title} description={project.description} current="work" lang={lang}>
+  <div class="wrap case-page">
+    <header class="case-header"><a class="back-link" href={purl('#work')}>← {ui.selectedWork}</a><p class="project-type">{project.category}</p><h1>{project.title}</h1><p class="case-subtitle">{project.subtitle}</p><p class="case-description">{project.description}</p>{project.repositoryUrl && <a class="inline-link repository-link" href={project.repositoryUrl}>{ui.viewRepository} <span aria-hidden="true">↗</span></a>}<dl class="project-facts"><div><dt>{ui.myRole}</dt><dd>{project.role}</dd></div><div><dt>{ui.team}</dt><dd>{project.company}</dd></div><div><dt>{ui.period}</dt><dd>{project.period}</dd></div><div><dt>{ui.delivery}</dt><dd>{project.status}</dd></div></dl></header>
+    {group && group.cases.length > 1 && <nav class="case-siblings" aria-label={ui.projectCases}><p>{group.title} · {ui.projectCases}</p><div class="project-links">{group.cases.map(item => <a class="inline-link" href={purl(`work/${item.slug}/`)} aria-current={item.slug === project.slug ? 'page' : undefined}>{item.label}{item.slug !== project.slug && <span aria-hidden="true">↗</span>}</a>)}</div></nav>}
+    {project.cover && <div class="case-cover"><MediaFigure lang={lang} media={{...project.cover, caption: project.evidence}} eager /></div>}
+    <div class="case-grid">
+      <aside class="case-toc"><nav aria-label={ui.caseContents}><p>{ui.caseContents}</p><a href="#contribution">{ui.contribution}</a>{project.sections.map(section => <a href={`#${section.id}`}>{section.title}</a>)}<a href="#outcome">{ui.outcome}</a></nav></aside>
+      <article class="case-body">
+        <section id="contribution" class="case-section contribution"><h2>{ui.contribution}</h2><ul class="body-list">{project.ownership.map(item => <li>{item}</li>)}</ul></section>
+        {project.sections.map(section => (
+          <section id={section.id} class="case-section">
+            <h2>{section.title}</h2>
+            {section.intro && <p class="section-intro">{section.intro}</p>}
+            {section.paragraphs?.map(paragraph => <p>{paragraph}</p>)}
+            {section.steps && <ol class="process-list">{section.steps.map(step => <li>{step}</li>)}</ol>}
+            {section.media && <div class:list={['case-gallery', {'sketch-gallery': section.gallery === 'sketches', 'annotated-gallery': section.gallery === 'annotated'}]}>{section.media.map(media => <MediaFigure lang={lang} media={media} compact={section.gallery === 'sketches'} />)}</div>}
+            {section.mediaGroups?.map(group => (
+              <div id={group.id} class:list={['media-stage', {'encounter-study': group.gallery === 'encounter'}]}>
+                <h3>{group.title}</h3>
+                {group.intro && <p>{group.intro}</p>}
+                {group.gallery === 'encounter' ? (
+                  <div class="case-gallery encounter-gallery">
+                    <div class:list={['study-sketches', {'has-tall': group.media.some(media => media.layout === 'tall')}]}>
+                      <div class="study-drafts">
+                        {group.media.filter(media => media.stage === 'sketch' && media.layout !== 'tall').map(media => <div id={media.anchor} class="study-image"><MediaFigure lang={lang} media={media} compact /></div>)}
+                      </div>
+                      {group.media.some(media => media.layout === 'tall') && <div class="study-expanded">
+                        {group.media.filter(media => media.stage === 'sketch' && media.layout === 'tall').map(media => <div id={media.anchor} class="study-image"><MediaFigure lang={lang} media={media} compact /></div>)}
+                      </div>}
+                    </div>
+                    {group.media.filter(media => media.stage === 'shipped').map(media => <div id={media.anchor} class="study-image study-final"><MediaFigure lang={lang} media={media} /></div>)}
+                  </div>
+                ) : (
+                  <div class:list={['case-gallery', {'sketch-gallery': group.gallery === 'sketches'}]}>
+                    {group.media.map(media => <MediaFigure lang={lang} media={media} compact={group.gallery === 'sketches'} />)}
+                  </div>
+                )}
+              </div>
+            ))}
+            {section.points && <dl class="decision-list">{section.points.map(point => <div><dt>{point.title}</dt><dd>{point.text}</dd></div>)}</dl>}
+            {section.note && <p class="source-note">{section.note}</p>}
+          </section>
+        ))}
+        <section id="outcome" class="case-section"><h2>{ui.outcome}</h2><ul class="body-list">{project.outcomes.map(outcome => <li>{outcome}</li>)}</ul>{project.limitations.length > 0 && <><h3 class="limits-heading">{ui.limits}</h3><ul class="body-list">{project.limitations.map(limit => <li>{limit}</li>)}</ul></>}</section>
+      </article>
+    </div>
+    <nav class="next-project" aria-label={ui.nextProject}><span>{ui.nextProject}</span><a href={purl(`work/${next.slug}/`)}>{next.title}<span aria-hidden="true">↗</span></a></nav>
+  </div>
+</Base>

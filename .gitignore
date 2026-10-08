@@ -1,0 +1,73 @@
+# Website-only repository: root files are local unless explicitly allowed.
+/*
+!/.gitignore
+!/astro.config.mjs
+!/package.json
+!/package-lock.json
+!/tsconfig.json
+!/src/
+!/public/
+!/scripts/
+!/deploy/
+!/.github/
+
+# Only scripts required to build and validate the public website.
+/scripts/*
+!/scripts/astro.mjs
+!/scripts/check-content.mjs
+!/scripts/check-interactions.mjs
+!/scripts/check-site.mjs
+!/scripts/content-validation.mjs
+
+# Deployment configuration only.
+/deploy/*
+!/deploy/github-pages.yml
+/.github/*
+!/.github/workflows/
+/.github/workflows/*
+!/.github/workflows/deploy.yml
+
+# Public assets are deliberately maintained in these locations.
+/public/*
+!/public/media/
+!/public/files/
+!/public/social/
+!/public/favicon.svg
+!/public/favicon-32.png
+!/public/apple-touch-icon.png
+
+# Local records, source material, review captures, and generated output.
+output/
+source-assets/
+qa/
+CONTENT-TODO.md
+MEDIA-SOURCES.json
+README.md
+AGENTS.md
+node_modules/
+dist/
+.astro/
+.npm-cache/
+.workbuddy/
+.agents/
+.codex/
+.aws/
+.vscode/
+.idea/
+
+# Credentials, environment files, logs, and editor/OS artifacts.
+.env
+.env.*
+.npmrc
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+*.bak
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini

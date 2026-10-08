@@ -1,0 +1,29 @@
+{
+  "name": "jialin-xu-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/astro.mjs dev --host 127.0.0.1",
+    "build": "node scripts/astro.mjs build",
+    "preview": "node scripts/astro.mjs preview --host 127.0.0.1",
+    "check:site": "node scripts/check-site.mjs",
+    "check:interactions": "node scripts/check-interactions.mjs",
+    "check:types": "node scripts/astro.mjs check",
+    "build:release": "node scripts/astro.mjs build --require-site",
+    "check:content": "node scripts/check-content.mjs"
+  },
+  "dependencies": {
+    "@fontsource/geist": "5.3.0",
+    "astro": "7.3.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "esbuild": "0.28.2",
+    "sharp": "0.35.5",
+    "typescript": "6.0.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

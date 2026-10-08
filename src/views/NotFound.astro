@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+import { pageUrl } from '../lib/content';
+import { getUI, type Lang } from '../lib/i18n';
+interface Props { lang?: Lang; }
+const { lang = 'zh' } = Astro.props;
+const ui = getUI(lang);
+---
+<Base title={ui.notFound} lang={lang}><section class="wrap not-found"><p class="eyebrow">{ui.notFound}</p><h1>{ui.notFoundTitle}</h1><p>{ui.notFoundText}</p><a class="button" href={pageUrl('#work', lang)}>{ui.work} <span aria-hidden="true">↗</span></a></section></Base>

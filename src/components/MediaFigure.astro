@@ -1,0 +1,20 @@
+---
+import { url, type Media } from '../lib/content';
+import { mediaSrcSet } from '../lib/media';
+import { getUI, type Lang } from '../lib/i18n';
+interface Props { media: Media; eager?: boolean; compact?: boolean; lang?: Lang; }
+const { media, eager = false, compact = false, lang = 'zh' } = Astro.props;
+const ui = getUI(lang);
+const sources = mediaSrcSet(media);
+---
+<figure class:list={['media-figure', { compact }]}>
+  <a class="image-link" href={url(media.originalSrc || media.src)} data-lightbox data-preview-alt={media.originalSrc ? media.originalCaption : undefined} data-caption={media.originalCaption || media.caption || media.label || ''} aria-label={`${ui.enlargeImage}: ${media.label || media.alt}`}>
+    <img src={url(media.src)} srcset={sources} sizes={compact ? '(max-width: 767px) 92vw, 30vw' : '(max-width: 767px) 92vw, 900px'} alt={media.alt} width={media.width} height={media.height} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  </a>
+  {media.animation && <div class="clip-controls"><button class="text-button play-animation" data-animation={url(media.animation)} data-poster={url(media.src)} data-autoplay={media.autoplay ? 'true' : undefined} aria-pressed="false">{ui.playClip}</button><span class="clip-status" role="status"></span></div>}
+  <figcaption>
+    {media.label && <strong>{media.label}</strong>}
+    {media.caption && <span>{media.caption}</span>}
+    {media.source && <small>{media.sourceHref ? <a href={media.sourceHref}>{media.source}</a> : media.source}</small>}
+  </figcaption>
+</figure>

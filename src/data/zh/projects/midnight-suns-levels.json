@@ -1,0 +1,229 @@
+{
+  "slug": "midnight-suns-levels",
+  "title": "漫威暗夜之子",
+  "subtitle": "DLC 关卡与遭遇战设计",
+  "category": "商业项目",
+  "tags": [
+    "关卡设计",
+    "遭遇战布局",
+    "Unreal Engine"
+  ],
+  "summary": "完成季票的 5 张地图、10 场遭遇战及前后衔接空间设计。",
+  "description": "我参与死侍（Deadpool）、毒液（Venom）、莫比亚斯（Morbius）和暴风女（Storm）四个 DLC，每个负责一张地图中的两场战斗及前后衔接空间。此外，我负责季票额外赠送的最终战斗关卡，合计 5 张地图、10 场遭遇战。",
+  "role": "关卡设计与玩法实现",
+  "company": "维塔士",
+  "period": "2021.07–2023.02",
+  "status": "DLC 已发售",
+  "homeCover": {
+    "src": "media/midnight-suns-season-pass-landscape.webp",
+    "alt": "漫威暗夜之子官方横版 Season Pass 宣传图，展示四个 DLC 英雄",
+    "width": 1401,
+    "height": 789,
+    "source": "官方 Season Pass 宣传图 · 2K",
+    "sourceHref": "https://newsroom.2k.com/resources/marvel-s-midnight-suns-key-art-season-pass",
+    "srcSmall": "media/midnight-suns-season-pass-landscape-small.webp",
+    "widthSmall": 720,
+    "heightSmall": 405
+  },
+  "cover": {
+    "src": "media/dlc3-final-01.webp",
+    "alt": "我负责的 DLC 3 关卡中的第二场战斗，包含圆形中央战斗区域与周边掩体",
+    "width": 1800,
+    "height": 1038,
+    "label": "DLC 3：第二场战斗",
+    "srcSmall": "media/dlc3-final-01-small.webp",
+    "widthSmall": 840,
+    "heightSmall": 485
+  },
+  "ownership": [
+    "负责四个 DLC 及季票最终战斗关卡的战斗区域与衔接空间设计。",
+    "规划环境交互、击退路径和战术站位，将剧情与战斗需求落实到关卡布局。",
+    "与概念和场景美术协作，推进关卡制作，完成玩法配置、问题修复与版本收尾。"
+  ],
+  "evidence": "DLC 3 第二场战斗的游戏内画面。下文展示 DLC 2 的战术布局和 DLC 3 的纸面规划。",
+  "sections": [
+    {
+      "id": "tactical-opportunities",
+      "title": "DLC 2：眩晕、AOE 与击退",
+      "intro": "在 DLC 2 的两场战斗中，我通过环境交互提供不同的战术选择。图中保留了作品集 PPT 的原始圈注。",
+      "media": [
+        {
+          "src": "media/dlc2-annotated-01.webp",
+          "srcSmall": "media/dlc2-annotated-01-small.webp",
+          "width": 1800,
+          "height": 1013,
+          "widthSmall": 840,
+          "heightSmall": 473,
+          "label": "眩晕机会",
+          "caption": "蓝圈：眩晕交互物让玩家跳过 BOSS 一轮行动，缓解高难度下的生存压力。",
+          "alt": "DLC 2 战斗截图，三个蓝圈标出眩晕交互物",
+          "source": "游戏截图与原始 PPT 圈注"
+        },
+        {
+          "src": "media/dlc2-annotated-02.webp",
+          "srcSmall": "media/dlc2-annotated-02-small.webp",
+          "width": 1800,
+          "height": 974,
+          "widthSmall": 840,
+          "heightSmall": 455,
+          "label": "AOE 与击退机会",
+          "caption": "红圈：在母巢型敌人周边布置爆炸物，让玩家用 AOE 清理新生敌人。黄圈：在跌落区域附近布置击退交互物，提供环境击杀机会。",
+          "alt": "DLC 2 战斗截图，红圈标出爆炸物，黄圈标出跌落区域附近的击退交互物",
+          "source": "游戏截图与原始 PPT 圈注"
+        }
+      ],
+      "gallery": "annotated"
+    },
+    {
+      "id": "paper-planning",
+      "title": "DLC 3：两场战斗的设计迭代",
+      "intro": "两场战斗分别从纸面草稿推进到游戏内场景。每组草稿同时考虑战斗布局、空间衔接与周围环境。",
+      "paragraphs": [
+        "我先用手绘草稿推敲战斗流程和视线，再逐步展开外围空间。下面按战斗归属整理草稿；点击草稿可查看完整笔记页。"
+      ],
+      "mediaGroups": [
+        {
+          "id": "dlc3-first-encounter",
+          "title": "第一场战斗",
+          "gallery": "encounter",
+          "intro": "从矩形战斗区域出发，逐步推敲外围道路和衔接空间。",
+          "media": [
+            {
+              "src": "media/dlc3-battle1-notes.webp",
+              "srcSmall": "media/dlc3-battle1-notes-small.webp",
+              "width": 1080,
+              "height": 600,
+              "widthSmall": 840,
+              "heightSmall": 467,
+              "label": "战斗与衔接草稿",
+              "caption": "第一场战斗的纸面构思。",
+              "alt": "笔记页上半部：第一场战斗的矩形区域与连接方向",
+              "source": "原始手绘草稿局部",
+              "originalSrc": "media/dlc3-sketch-03.webp",
+              "originalCaption": "完整笔记页：上半部为第一场战斗，下半部为第二场战斗。",
+              "stage": "sketch"
+            },
+            {
+              "src": "media/dlc3-battle1-layout.webp",
+              "srcSmall": "media/dlc3-battle1-layout-small.webp",
+              "width": 1080,
+              "height": 610,
+              "widthSmall": 840,
+              "heightSmall": 474,
+              "label": "战斗与外围布局",
+              "caption": "继续推敲战斗区域与外围空间的关系。",
+              "alt": "已按 PPT 方向旋转的草稿上半部，展示第一场战斗及外围布局",
+              "source": "原始手绘草稿局部",
+              "originalSrc": "media/dlc3-sketch-02.webp",
+              "originalCaption": "完整笔记页：上半部为第一场战斗，下半部为第二场战斗。",
+              "stage": "sketch"
+            },
+            {
+              "src": "media/dlc3-sketch-01.webp",
+              "srcSmall": "media/dlc3-sketch-01-small.webp",
+              "width": 1080,
+              "height": 1577,
+              "widthSmall": 575,
+              "heightSmall": 840,
+              "label": "空间展开草稿",
+              "caption": "将战斗区域、道路与周围空间放在一起规划。",
+              "alt": "第一场战斗的完整空间草稿，包含道路、战斗区域与周围空间",
+              "source": "原始手绘草稿",
+              "stage": "sketch",
+              "layout": "tall"
+            },
+            {
+              "src": "media/dlc3-final-02.webp",
+              "srcSmall": "media/dlc3-final-02-small.webp",
+              "width": 1800,
+              "height": 1006,
+              "widthSmall": 840,
+              "heightSmall": 469,
+              "label": "第一场战斗：游戏内画面",
+              "caption": "第一场战斗的最终场景。",
+              "alt": "DLC 3 第一场战斗的游戏内截图，包含敌人、掩体与环境交互物",
+              "source": "已发售游戏截图",
+              "stage": "shipped",
+              "anchor": "shipped-spaces"
+            }
+          ]
+        },
+        {
+          "id": "dlc3-second-encounter",
+          "title": "第二场战斗",
+          "gallery": "encounter",
+          "intro": "围绕圆形战斗区域，推敲目标、敌人布置与周边空间。",
+          "media": [
+            {
+              "src": "media/dlc3-battle2-notes.webp",
+              "srcSmall": "media/dlc3-battle2-notes-small.webp",
+              "width": 1080,
+              "height": 557,
+              "widthSmall": 840,
+              "heightSmall": 433,
+              "label": "战斗与目标草稿",
+              "caption": "第二场战斗的纸面构思。",
+              "alt": "笔记页下半部：第二场战斗的圆形区域、目标与敌人方向",
+              "source": "原始手绘草稿局部",
+              "originalSrc": "media/dlc3-sketch-03.webp",
+              "originalCaption": "完整笔记页：上半部为第一场战斗，下半部为第二场战斗。",
+              "stage": "sketch"
+            },
+            {
+              "src": "media/dlc3-battle2-layout.webp",
+              "srcSmall": "media/dlc3-battle2-layout-small.webp",
+              "width": 1080,
+              "height": 742,
+              "widthSmall": 840,
+              "heightSmall": 577,
+              "label": "战斗与外围布局",
+              "caption": "继续展开圆形区域与周围空间。",
+              "alt": "已按 PPT 方向旋转的草稿下半部，展示第二场战斗的圆形区域及外围空间",
+              "source": "原始手绘草稿局部",
+              "originalSrc": "media/dlc3-sketch-02.webp",
+              "originalCaption": "完整笔记页：上半部为第一场战斗，下半部为第二场战斗。",
+              "stage": "sketch"
+            },
+            {
+              "src": "media/dlc3-final-01.webp",
+              "srcSmall": "media/dlc3-final-01-small.webp",
+              "width": 1800,
+              "height": 1038,
+              "widthSmall": 840,
+              "heightSmall": 485,
+              "label": "第二场战斗：游戏内画面",
+              "caption": "第二场战斗的最终场景。",
+              "alt": "DLC 3 第二场战斗的游戏内截图，展示圆形中央区域与周边设施",
+              "source": "已发售游戏截图",
+              "stage": "shipped"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "layout-decisions",
+      "title": "站位与击退路径",
+      "intro": "游戏没有可见的移动网格，玩家需要从环境判断活动范围、站位和攻击方向。",
+      "points": [
+        {
+          "title": "活动范围",
+          "text": "用花坛和场景边缘提示空间边界。"
+        },
+        {
+          "title": "击退方向",
+          "text": "留出清晰的击退路径，便于玩家判断目标会撞到哪里。"
+        },
+        {
+          "title": "交互布局",
+          "text": "围绕敌人站位安排环境交互，让玩家移动后仍有可选的攻击角度。"
+        }
+      ]
+    }
+  ],
+  "outcomes": [
+    "完成 5 张地图、10 场遭遇战及衔接空间，随四个 DLC 和季票额外关卡发售。",
+    "DLC 2 截图展示了环境交互的布局；DLC 3 草稿与最终画面记录了关卡从规划到制作的过程。"
+  ],
+  "limitations": []
+}

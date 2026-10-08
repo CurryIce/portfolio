@@ -1,0 +1,81 @@
+{
+  "slug": "dlc-skills",
+  "title": "DLC Skill Blueprints",
+  "subtitle": "Marvel’s Midnight Suns",
+  "category": "Commercial project",
+  "tags": [
+    "Blueprint scripting",
+    "Gameplay implementation",
+    "Debugging"
+  ],
+  "summary": "Built ability Blueprints for four DLC heroes, connected animation, effects, and UI, and debugged movement, targeting, and state issues.",
+  "description": "I implemented abilities for four DLC heroes and selected enemies, handling Blueprint configuration, presentation, and debugging.",
+  "role": "Skill implementation & debugging",
+  "company": "Virtuos",
+  "period": "Jul 2021 – Feb 2023",
+  "status": "Released DLC",
+  "cover": {
+    "src": "media/dlc-skill-poster.webp",
+    "alt": "Deadpool performing a fiery attack in Marvel’s Midnight Suns",
+    "width": 600,
+    "height": 562,
+    "animation": "media/dlc-skill.gif",
+    "autoplay": true,
+    "label": "DLC ability gameplay",
+    "source": "Gameplay clip",
+    "srcSmall": "media/dlc-skill-poster-small.webp",
+    "widthSmall": 600,
+    "heightSmall": 562
+  },
+  "ownership": [
+    "Implemented abilities for four DLC heroes and selected enemies using the client’s rules, values, and existing framework.",
+    "Integrated animation, effects, UI, and cleanup, completing the flow from target selection to damage resolution.",
+    "Used Blueprint breakpoints to resolve character movement, target filtering, duplicate UI, and special-enemy state issues."
+  ],
+  "evidence": "Gameplay from the Marvel’s Midnight Suns DLC.",
+  "sections": [
+    {
+      "id": "skill-sequence",
+      "title": "Deadpool’s ability sequence",
+      "intro": "For Burning Sensation, I connected movement toward the target, animation, the background mask, hit reactions, fire effects, and UI, then restored the normal battle view at the end.",
+      "steps": [
+        "Approach and face the selected target",
+        "Start the mask and attack animation",
+        "Drive hit reactions with animation notifies",
+        "Resolve damage once after the attack sequence",
+        "Clear effects and finish the skill"
+      ]
+    },
+    {
+      "id": "compatibility",
+      "title": "Fixing Deadpool’s movement",
+      "intro": "Deadpool’s movement was still incorrect after adjusting Root Motion. Blueprint breakpoints led me to character-specific position handling in the parent Blueprint.",
+      "paragraphs": [
+        "A general refactor was outside the DLC schedule. I added a Deadpool-specific branch to fix his movement while keeping the existing handling for other characters."
+      ]
+    },
+    {
+      "id": "configuration",
+      "title": "Configuration and debugging",
+      "points": [
+        {
+          "title": "Target filtering",
+          "text": "Fixed a filter that allowed invalid targets, causing an ability to animate without its intended gameplay effect."
+        },
+        {
+          "title": "Duplicate UI",
+          "text": "Removed duplicate calls in the child ability after confirming that the parent Blueprint already handled the UI."
+        },
+        {
+          "title": "Enemy state",
+          "text": "Fixed a special enemy’s taunt animation state and completed the relevant ability configuration."
+        }
+      ]
+    }
+  ],
+  "outcomes": [
+    "The hero and enemy abilities I implemented shipped with the DLC.",
+    "Resolved movement compatibility, invalid targeting, duplicate UI, and special-enemy state issues."
+  ],
+  "limitations": []
+}

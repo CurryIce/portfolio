@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { getContent, pageUrl } from '../lib/content';
+import { getUI, type Lang } from '../lib/i18n';
+interface Props { lang?: Lang; }
+const { lang = 'zh' } = Astro.props;
+const { profile } = getContent(lang);
+const ui = getUI(lang);
+const purl = (path = '') => pageUrl(path, lang);
+---
+<Base title={ui.about} current="about" lang={lang}>
+  <div class="wrap inner-page"><header class="inner-header"><p class="eyebrow">{ui.about}</p><h1>{ui.aboutTitle}</h1><p>{profile.about}</p></header>
+    <section class="about-detail"><h2>{ui.howIWork}</h2><div><p>{profile.approach}</p><div class="about-focus">{profile.aboutFocus.map(focus => <article><h3>{focus.title}</h3><p>{focus.text}</p><nav class="project-links" aria-label={`${focus.title} · ${ui.caseLinks}`}>{focus.links.map(link => <a class="inline-link" href={purl(`work/${link.slug}/`)}>{link.label} <span aria-hidden="true">↗</span></a>)}</nav></article>)}</div></div></section>
+    <aside class="resume-reference"><p>{ui.resumeReference}</p><a class="inline-link" href={purl('resume/')}>{ui.resume} <span aria-hidden="true">↗</span></a></aside>
+  </div>
+</Base>

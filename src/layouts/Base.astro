@@ -1,0 +1,94 @@
+---
+import '@fontsource/geist/latin-400.css';
+import '@fontsource/geist/latin-500.css';
+import '@fontsource/geist/latin-600.css';
+import '../styles/global.css';
+import { getContent, pageUrl, url } from '../lib/content';
+import { getUI, type Lang } from '../lib/i18n';
+interface Props { title?: string; description?: string; current?: string; lang?: Lang; }
+const { title, current = '', lang = 'zh' } = Astro.props;
+const { profile } = getContent(lang);
+const ui = getUI(lang);
+const description = Astro.props.description || profile.intro;
+const pageTitle = title ? `${title} | ${profile.name}` : `${profile.name} | ${ui.discipline}`;
+const links = [{ label: ui.work, path: '#work', active: 'work' }, { label: ui.about, path: 'about/', active: 'about' }, { label: ui.resume, path: 'resume/', active: 'resume' }, { label: ui.contact, path: '#contact', active: 'contact' }];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const route = Astro.url.pathname.slice(base.length).replace(/^\//, '').replace(/^en\//, '');
+const otherLang = lang === 'zh' ? 'en' : 'zh';
+const routeFor = (target: Lang) => /^404(?:\.html|\/)?$/.test(route) ? (target === 'en' ? '404/' : '404.html') : route;
+const alternate = (target: Lang) => Astro.site ? new URL(pageUrl(routeFor(target), target), Astro.site) : undefined;
+const shareImage = new URL(url(`social/portfolio-${lang}.png`), Astro.site || Astro.url);
+const shareAlt = lang === 'zh' ? '许嘉麟，关卡策划与玩法策划作品集' : 'Jialin Xu, Level & Gameplay Design Portfolio';
+const isNotFound = /^404(?:\.html|\/)?$/.test(route);
+const canonical = !isNotFound && Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+---
+<!doctype html>
+<html lang={lang === 'zh' ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <link rel="icon" type="image/png" sizes="32x32" href={url('favicon-32.png')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={url('apple-touch-icon.png')} />
+    {isNotFound && <meta name="robots" content="noindex" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={profile.name} />
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={shareAlt} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={shareImage} />
+    <meta name="twitter:image:alt" content={shareAlt} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {Astro.site && <><link rel="alternate" hreflang="zh-CN" href={alternate('zh')} /><link rel="alternate" hreflang="en" href={alternate('en')} /><link rel="alternate" hreflang="x-default" href={alternate('zh')} /></>}
+    <title>{pageTitle}</title>
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      try {
+        const value = localStorage.getItem('portfolio-theme');
+        if (value === 'light' || value === 'dark') document.documentElement.dataset.theme = value;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{ui.skip}</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href={pageUrl('', lang)}>{profile.name}<span class="wordmark-line"></span></a>
+      <button class="menu-toggle text-button" data-menu-toggle aria-controls="site-nav" aria-expanded="false">{ui.menu}</button>
+      <nav id="site-nav" class="site-nav" aria-label={ui.navigation}>
+        {links.map(link => <a href={pageUrl(link.path, lang)} aria-current={current === link.active ? 'page' : undefined}>{link.label}</a>)}
+        <a class="language-toggle" href={pageUrl(routeFor(otherLang), otherLang)} data-language-switch aria-label={ui.switchLanguage} lang={otherLang === 'zh' ? 'zh-CN' : 'en'} hreflang={otherLang === 'zh' ? 'zh-CN' : 'en'}>{lang === 'zh' ? 'English' : '中文'}</a>
+        <button class="theme-toggle text-button" data-theme-toggle aria-label={ui.themeChange}>{ui.system}</button>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer id="contact" class="site-footer wrap">
+      <div class="footer-main">
+        <h2>{ui.contactTitle}</h2>
+        <dl class="contact-details">
+          <div><dt>{ui.email}</dt><dd><a class="contact-link" href={`mailto:${profile.email}`}>{profile.email}<span aria-hidden="true"> ↗</span></a></dd></div>
+          {profile.phone && <div><dt>{ui.phone}</dt><dd><a class="contact-link" href={profile.phoneHref}>{profile.phone}<span aria-hidden="true"> ↗</span></a></dd></div>}
+        </dl>
+      </div>
+      {(profile.linkedin || profile.github) && <nav class="social-links" aria-label={ui.professionalProfiles}>{profile.linkedin && <a href={profile.linkedin}>LinkedIn</a>}{profile.github && <a href={profile.github}>GitHub</a>}</nav>}
+      <div class="footer-bottom"><p>{profile.name} <span>{ui.discipline}</span></p><p>© {new Date().getFullYear()}</p></div>
+    </footer>
+    <dialog id="image-viewer" class="image-viewer" aria-label={ui.enlargedImage}>
+      <button class="viewer-close" data-viewer-close aria-label={ui.closeImage}>{ui.close} <span aria-hidden="true">×</span></button>
+      <figure><img id="viewer-image" alt="" /><figcaption id="viewer-caption"></figcaption></figure>
+    </dialog>
+    <script>
+      import '../scripts/interactions';
+    </script>
+  </body>
+</html>

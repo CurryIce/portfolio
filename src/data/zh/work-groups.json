@@ -1,0 +1,61 @@
+[
+  {
+    "id": "midnight-suns",
+    "title": "漫威暗夜之子",
+    "subtitle": "DLC 关卡设计与技能实现",
+    "category": "商业项目 · 维塔士",
+    "summary": "负责季票的 5 张地图、10 场遭遇战，涵盖四个 DLC 及额外赠送的最终战斗关卡；同时制作四名 DLC 英雄及部分敌人的技能蓝图。",
+    "cases": [
+      {
+        "slug": "midnight-suns-levels",
+        "label": "关卡空间与遭遇战",
+        "preview": "规划环境交互、击退路径和战术站位，将剧情与战斗需求落实到关卡布局。"
+      },
+      {
+        "slug": "dlc-skills",
+        "label": "技能蓝图与联调",
+        "preview": "制作四名 DLC 英雄的技能蓝图，接入动画、特效与 UI，并排查位移、目标过滤和状态问题。"
+      }
+    ]
+  },
+  {
+    "id": "fps-remake",
+    "title": "未公开 FPS 重制项目",
+    "category": "商业项目 · 维塔士",
+    "summary": "制作关卡演出、空间引导与状态恢复，并和程序共同开发事件检查工具，将旧脚本中的事件关系带入 Unreal 视口。",
+    "cases": [
+      {
+        "slug": "fps-levels",
+        "label": "关卡逻辑与演出"
+      },
+      {
+        "slug": "event-tool",
+        "label": "旧关卡事件可视化工具"
+      }
+    ]
+  },
+  {
+    "id": "mission-photo",
+    "title": "王者荣耀世界",
+    "category": "商业项目 · 腾娱互动",
+    "summary": "设计任务拍照模式，复用现有拍照系统，梳理进入条件、目标判定与成功后的处理。",
+    "cases": [
+      {
+        "slug": "mission-photo",
+        "label": "任务拍照玩法设计"
+      }
+    ]
+  },
+  {
+    "id": "sokoban",
+    "title": "推箱子游戏原型与关卡编辑器",
+    "category": "个人项目 · Unreal Engine",
+    "summary": "制作三关推箱子原型，实现确定性的棋盘规则与撤销，并用关卡编辑器完成绘制、验证和保存。",
+    "cases": [
+      {
+        "slug": "sokoban",
+        "label": "规则、关卡编辑与调试"
+      }
+    ]
+  }
+]

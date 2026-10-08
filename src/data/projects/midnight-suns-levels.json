@@ -1,0 +1,229 @@
+{
+  "slug": "midnight-suns-levels",
+  "title": "Marvel’s Midnight Suns",
+  "subtitle": "DLC level & encounter design",
+  "category": "Commercial project",
+  "tags": [
+    "Level design",
+    "Encounter layout",
+    "Unreal Engine"
+  ],
+  "summary": "Designed five Season Pass maps, ten encounters, and their connecting spaces.",
+  "description": "I worked on the Deadpool, Venom, Morbius, and Storm DLCs, designing two encounters and their connecting spaces in one map per pack. I also designed the bonus finale included with the Season Pass, bringing the total to five maps and ten encounters.",
+  "role": "Level design & gameplay implementation",
+  "company": "Virtuos",
+  "period": "Jul 2021 – Feb 2023",
+  "status": "Released DLC",
+  "homeCover": {
+    "src": "media/midnight-suns-season-pass-landscape.webp",
+    "alt": "Official landscape Season Pass artwork for Marvel’s Midnight Suns, featuring the four DLC heroes",
+    "width": 1401,
+    "height": 789,
+    "source": "Official Season Pass key art · 2K",
+    "sourceHref": "https://newsroom.2k.com/resources/marvel-s-midnight-suns-key-art-season-pass",
+    "srcSmall": "media/midnight-suns-season-pass-landscape-small.webp",
+    "widthSmall": 720,
+    "heightSmall": 405
+  },
+  "cover": {
+    "src": "media/dlc3-final-01.webp",
+    "alt": "The second combat encounter in the DLC 3 level I worked on, with a circular central arena and surrounding cover",
+    "width": 1800,
+    "height": 1038,
+    "label": "DLC 3: second combat encounter",
+    "srcSmall": "media/dlc3-final-01-small.webp",
+    "widthSmall": 840,
+    "heightSmall": 485
+  },
+  "ownership": [
+    "Designed combat areas and connecting spaces for all four DLC packs and the bonus Season Pass finale.",
+    "Planned environmental interactions, knockback paths, and tactical positions around story and combat requirements.",
+    "Worked with concept and environment artists through level production, then handled gameplay configuration, bug fixes, and final delivery."
+  ],
+  "evidence": "The second combat encounter in DLC 3. Below are the DLC 2 encounter layouts and paper sketches for DLC 3.",
+  "sections": [
+    {
+      "id": "tactical-opportunities",
+      "title": "DLC 2: stun, AOE, and knockback",
+      "intro": "I placed environmental interactions to give players tactical choices in these two DLC 2 encounters. The images retain the original annotations from my portfolio slides.",
+      "media": [
+        {
+          "src": "media/dlc2-annotated-01.webp",
+          "srcSmall": "media/dlc2-annotated-01-small.webp",
+          "width": 1800,
+          "height": 1013,
+          "widthSmall": 840,
+          "heightSmall": 473,
+          "label": "Stun opportunities",
+          "caption": "Blue circles: stun interactions let players skip a boss turn, easing survival pressure on higher difficulties.",
+          "alt": "DLC 2 encounter with three original blue circles marking stun interactions",
+          "source": "Game screenshot with original slide annotations"
+        },
+        {
+          "src": "media/dlc2-annotated-02.webp",
+          "srcSmall": "media/dlc2-annotated-02-small.webp",
+          "width": 1800,
+          "height": 974,
+          "widthSmall": 840,
+          "heightSmall": 455,
+          "label": "AOE and knockback opportunities",
+          "caption": "Red circles: explosives around enemies that spawn reinforcements give players an AOE option for clearing new enemies. Yellow circles: knockback interactions near fall zones create opportunities for environmental kills.",
+          "alt": "DLC 2 encounter with original red circles on explosives and yellow circles on knockback interactions near fall zones",
+          "source": "Game screenshot with original slide annotations"
+        }
+      ],
+      "gallery": "annotated"
+    },
+    {
+      "id": "paper-planning",
+      "title": "DLC 3: developing two encounters",
+      "intro": "Each encounter developed from paper sketches into a finished game space. The studies consider combat layout, connections, and the surrounding environment together.",
+      "paragraphs": [
+        "I used paper sketches to work through combat flow and sightlines before expanding the surrounding spaces. The excerpts below are grouped by encounter; click a sketch to see the full notebook page."
+      ],
+      "mediaGroups": [
+        {
+          "id": "dlc3-first-encounter",
+          "title": "First encounter",
+          "gallery": "encounter",
+          "intro": "Starting with a rectangular combat area, I developed the surrounding routes and connecting spaces.",
+          "media": [
+            {
+              "src": "media/dlc3-battle1-notes.webp",
+              "srcSmall": "media/dlc3-battle1-notes-small.webp",
+              "width": 1080,
+              "height": 600,
+              "widthSmall": 840,
+              "heightSmall": 467,
+              "label": "Combat and connections",
+              "caption": "An early paper study for the first encounter.",
+              "alt": "Upper notebook study of the first encounter’s rectangular area and connections",
+              "source": "Excerpt from original notebook",
+              "originalSrc": "media/dlc3-sketch-03.webp",
+              "originalCaption": "Full notebook page: the upper study belongs to the first encounter, the lower study to the second.",
+              "stage": "sketch"
+            },
+            {
+              "src": "media/dlc3-battle1-layout.webp",
+              "srcSmall": "media/dlc3-battle1-layout-small.webp",
+              "width": 1080,
+              "height": 610,
+              "widthSmall": 840,
+              "heightSmall": 474,
+              "label": "Combat and surrounding layout",
+              "caption": "Working through the relationship between the combat area and its surroundings.",
+              "alt": "Upright upper sketch of the first encounter and its surrounding layout",
+              "source": "Excerpt from original notebook",
+              "originalSrc": "media/dlc3-sketch-02.webp",
+              "originalCaption": "Full notebook page: the upper study belongs to the first encounter, the lower study to the second.",
+              "stage": "sketch"
+            },
+            {
+              "src": "media/dlc3-sketch-01.webp",
+              "srcSmall": "media/dlc3-sketch-01-small.webp",
+              "width": 1080,
+              "height": 1577,
+              "widthSmall": 575,
+              "heightSmall": 840,
+              "label": "Expanding the space",
+              "caption": "Planning the combat area, routes, and surrounding spaces together.",
+              "alt": "Full first-encounter study showing routes, combat areas, and surrounding spaces",
+              "source": "Original notebook sketch",
+              "stage": "sketch",
+              "layout": "tall"
+            },
+            {
+              "src": "media/dlc3-final-02.webp",
+              "srcSmall": "media/dlc3-final-02-small.webp",
+              "width": 1800,
+              "height": 1006,
+              "widthSmall": 840,
+              "heightSmall": 469,
+              "label": "First encounter: in game",
+              "caption": "The finished space for the first encounter.",
+              "alt": "Released DLC 3 first encounter with enemies, cover, and environmental interactions",
+              "source": "Released game screenshot",
+              "stage": "shipped",
+              "anchor": "shipped-spaces"
+            }
+          ]
+        },
+        {
+          "id": "dlc3-second-encounter",
+          "title": "Second encounter",
+          "gallery": "encounter",
+          "intro": "Working around a circular combat area, I developed the objective, enemy placement, and surrounding space.",
+          "media": [
+            {
+              "src": "media/dlc3-battle2-notes.webp",
+              "srcSmall": "media/dlc3-battle2-notes-small.webp",
+              "width": 1080,
+              "height": 557,
+              "widthSmall": 840,
+              "heightSmall": 433,
+              "label": "Combat and objective",
+              "caption": "An early paper study for the second encounter.",
+              "alt": "Lower notebook study of the second encounter’s circular area, objective, and enemy directions",
+              "source": "Excerpt from original notebook",
+              "originalSrc": "media/dlc3-sketch-03.webp",
+              "originalCaption": "Full notebook page: the upper study belongs to the first encounter, the lower study to the second.",
+              "stage": "sketch"
+            },
+            {
+              "src": "media/dlc3-battle2-layout.webp",
+              "srcSmall": "media/dlc3-battle2-layout-small.webp",
+              "width": 1080,
+              "height": 742,
+              "widthSmall": 840,
+              "heightSmall": 577,
+              "label": "Combat and surrounding layout",
+              "caption": "Developing the circular area and its surroundings.",
+              "alt": "Upright lower sketch of the second encounter’s circular area and surroundings",
+              "source": "Excerpt from original notebook",
+              "originalSrc": "media/dlc3-sketch-02.webp",
+              "originalCaption": "Full notebook page: the upper study belongs to the first encounter, the lower study to the second.",
+              "stage": "sketch"
+            },
+            {
+              "src": "media/dlc3-final-01.webp",
+              "srcSmall": "media/dlc3-final-01-small.webp",
+              "width": 1800,
+              "height": 1038,
+              "widthSmall": 840,
+              "heightSmall": 485,
+              "label": "Second encounter: in game",
+              "caption": "The finished space for the second encounter.",
+              "alt": "Released DLC 3 second encounter showing the circular central area and surrounding structures",
+              "source": "Released game screenshot",
+              "stage": "shipped"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "layout-decisions",
+      "title": "Positions and knockback paths",
+      "intro": "With no visible movement grid, players read the environment to judge where they can move and how to line up an attack.",
+      "points": [
+        {
+          "title": "Playable space",
+          "text": "Planters and environmental edges suggest the boundaries of the space."
+        },
+        {
+          "title": "Knockback direction",
+          "text": "Clear paths help players judge where a target will land or collide."
+        },
+        {
+          "title": "Interaction placement",
+          "text": "Interactions around enemy positions give players useful attack angles after moving."
+        }
+      ]
+    }
+  ],
+  "outcomes": [
+    "Delivered five maps, ten encounters, and their connecting spaces across the four DLC packs and the bonus Season Pass level.",
+    "The DLC 2 screenshots show the interaction layouts; the DLC 3 sketches and final views show the level’s progress from planning to production."
+  ],
+  "limitations": []
+}
